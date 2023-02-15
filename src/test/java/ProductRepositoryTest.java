@@ -23,7 +23,7 @@ public class ProductRepositoryTest {
             "Книга 2",
             120,
             "Горе от ума",
-            "А.С.Грибоедов"
+            "Л.Н.Толстой"
     );
     Product product3 = new Smartphone(
             3,
@@ -99,19 +99,45 @@ public class ProductRepositoryTest {
         manager.add(product2);
         manager.add(product3);
 
-        Product[] expected = {product2};
-        Product[] actual = manager.searchBy("Книга 2");
+        Product[] expected = {product1};
+        Product[] actual = manager.searchBy("Война и мир");
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
-    public  void shouldSearchByTest() {
-        manager.add(product1);
+    public void shouldSearchByMatches() {
+        manager.add(product4);
         manager.add(product5);
         manager.add(product6);
 
-        Product[] expected = {product5, product6};
-        Product[] actual = manager.searchBy("Телефон 3");
+        Product[] expected = {product4};
+        Product[] actual = manager.searchBy("Самсунг Е6");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthor() {
+        manager.add(product1);
+        manager.add(product2);
+        manager.add(product3);
+
+        Product[] expected = {product1, product2};
+        Product[] actual = manager.searchBy("Л.Н.Толстой");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByProducer() {
+        manager.add(product3);
+        manager.add(product4);
+        manager.add(product5);
+        manager.add(product6);
+
+        Product[] expected = {product3, product4, product5};
+        Product[] actual = manager.searchBy("Samsung");
 
         Assertions.assertArrayEquals(expected, actual);
     }

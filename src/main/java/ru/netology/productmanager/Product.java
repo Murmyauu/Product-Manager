@@ -3,7 +3,7 @@ package ru.netology.productmanager;
 public class Product {
     protected int id;
     protected String productName;
-    protected  int price;
+    protected int price;
     protected String name;
 
     public Product(int id, String productName, int price, String name) {
@@ -36,10 +36,20 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean matches(String search) {
+        if (getName().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
