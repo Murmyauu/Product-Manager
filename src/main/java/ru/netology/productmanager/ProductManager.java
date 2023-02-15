@@ -28,11 +28,10 @@ public class ProductManager {
         return result;
     }
 
-    public boolean matches(Product product, String search) {
-        if (product.matches(search)) {
-            return true;
-        } else {
-            return false;
-        }
+//    public boolean matches(Product product, String search)
+//         if (product.matches(search)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
     }
-}
