@@ -141,4 +141,18 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldSearchWhenNoSuitableProduct() {
+        manager.add(product1);
+        manager.add(product2);
+        manager.add(product3);
+        manager.add(product4);
+        manager.add(product5);
+        manager.add(product6);
+
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Nokia");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
