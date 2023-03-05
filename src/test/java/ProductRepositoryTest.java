@@ -1,9 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.netology.productmanager.Book;
-import ru.netology.productmanager.Product;
-import ru.netology.productmanager.ProductManager;
-import ru.netology.productmanager.Smartphone;
+import ru.netology.productmanager.*;
 import ru.netology.repository.ProductRepository;
 
 public class ProductRepositoryTest {
@@ -141,6 +138,7 @@ public class ProductRepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldSearchWhenNoSuitableProduct() {
         manager.add(product1);
@@ -154,5 +152,19 @@ public class ProductRepositoryTest {
         Product[] actual = manager.searchBy("Nokia");
 
         Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldReturnNotFoundExceptionWhenDeleteNullId() {
+        manager.add(product1);
+        manager.add(product2);
+        manager.add(product3);
+        manager.add(product4);
+        manager.add(product5);
+        manager.add(product6);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(15);
+        });
     }
 }
